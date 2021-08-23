@@ -1,0 +1,47 @@
+.container {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.inputColor {
+  color: white;
+}
+
+.btn {
+  background-color: #ffa500;
+}
+
+.btn:hover {
+  background-color: #ff8c00;
+}
+
+.hms {
+  font-size: 68pt;
+  font-weight: 200;
+}
+.ampm {
+  font-size: 22pt;
+}
+.date {
+  font-size: 15pt;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  margin-top: 150px;
+  background: #bbbcbd; 
+  margin-left: 70px;
+}
+.time {
+  background: linear-gradient(to left, blue, green, yellow, orange, red);
+  color: #082032;
+  text-align: center;
+  border: 7px solid rgb(255, 252, 252);
+  padding: 8px;
+}

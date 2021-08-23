@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card-reveal">
+        <img class="card-title grey-text center" />
+        <br />
+        <div class="time">
+          <div class="hms"></div>
+          <div class="ampm"></div>
+          <br />
+          <div class="date"></div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="card-panel">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Temperature" id="txtTemp" type="text" class="validate" />
+                      <label for="number">Temperature</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select id="tempOrigin" class="icons">
+                  <option value="1" disabled selected>Choose your option</option>
+                  <option value="2">Celsius</option>
+                  <option value="3">Farenheit</option>
+                  <option value="4">Reamur</option>
+                </select>
+                <label>Temperature Origin</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select id="tempDestiny" class="icons">
+                  <option value="1" disabled selected>Choose your option</option>
+                  <option value="2">Celsius</option>
+                  <option value="3">Farenheit</option>
+                  <option value="4">Reamur</option>
+                </select>
+                <label>Temperature Destiny</label>
+              </div>
+
+              <div class="row">
+                <button class="btn waves-effect waves-light center" id="btnAccept" type="submit" name="action">Convertir</button>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Temperature" id="txtResult" type="text" class="validate" value="" disabled />
+                  <label for="number">Result</label>
+                </div>
+              </div>
+
+              Change Background Color : <input class="form-control" id="color" /><button name="action" type="button" class="btn waves-effect waves-light center" onclick="change()">Change</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //Javascript Waktu
+      function updateTime() {
+        var dateInfo = new Date();
+
+        var hr,
+          _min = dateInfo.getMinutes() < 10 ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+          sec = dateInfo.getSeconds() < 10 ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+          ampm = dateInfo.getHours() >= 12 ? "PM" : "AM";
+
+        if (dateInfo.getHours() == 0) {
+          hr = 12;
+        } else if (dateInfo.getHours() > 12) {
+          hr = dateInfo.getHours() - 12;
+        } else {
+          hr = dateInfo.getHours();
+        }
+
+        var currentTime = hr + ":" + _min + ":" + sec;
+
+        document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+        document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+
+        var dow = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          day = dateInfo.getDate();
+
+        var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+
+        document.getElementsByClassName("date")[0].innerHTML = currentDate;
+      }
+
+      updateTime();
+      setInterval(function () {
+        updateTime();
+      }, 1000);
+
+      function change() {
+        document.body.style.backgroundColor = document.getElementById("color").value;
+      }
+    </script>
+  </body>
+
+  <div class="footer"><span>&#169;</span> Copyright by Alfian Himawan</div>
+
+  <script src="js/index.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</html>
